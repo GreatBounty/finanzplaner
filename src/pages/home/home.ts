@@ -142,6 +142,7 @@ export class HomePage {
             return { id, ...data };
           })
         })
+        
 
         values.subscribe(data => {
           if (data.length != 0) {
@@ -162,6 +163,7 @@ export class HomePage {
         return { id, ...data };
       })
     })
+
     values.subscribe(data => {
       if (data.length > 0) {
         data.forEach(val => {
