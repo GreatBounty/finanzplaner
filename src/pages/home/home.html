@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h3>Neue Ausgabe</h3>
+
+  <form [formGroup]="ausgabeFormGroup" (ngSubmit)="logForm()">
+    <ion-item>
+      <ion-label floating>Betrag</ion-label>
+      <ion-input required type="number" formControlName="betrag"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Kategorie</ion-label>
+      <ion-input required (focus)="selectCategorie($event)" type="text" formControlName="kategorie" (input)="selectCategorie($event)"></ion-input>
+    </ion-item>
+    <ion-list>
+      <ion-item *ngFor="let c of categoriesFiltered">
+        <ion-label (click)="setCategorieFromHtml(c)"><ion-icon class="test" ios="logo-apple" md="logo-android"></ion-icon>{{c}}</ion-label>
+      </ion-item>
+
+      
+    </ion-list>
+    <ion-item>
+      <ion-label floating>Unterkategorie</ion-label>
+      <ion-input type="text" (focus)="selectSubCategorie($event)" formControlName="unterkategorie" (input)="selectSubCategorie($event)"></ion-input>
+    </ion-item>
+    <ion-list>
+      <ion-item *ngFor="let c of subCategoriesFiltered">
+        <ion-label (click)="setSubCategorieFromHtml(c)">{{c}}</ion-label>
+      </ion-item>
+    </ion-list>
+    <ion-item>
+      <ion-label floating>Date</ion-label>
+      <ion-datetime displayFormat="DD.MM.YYYY HH:mm" formControlName="kaufzeitpunkt"></ion-datetime>
+    </ion-item>
+
+    <button ion-button type="submit" [disabled]="!ausgabeFormGroup.valid">Submit</button>
+  </form>
+</ion-content>

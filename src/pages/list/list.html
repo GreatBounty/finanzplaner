@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>List</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-label>Filterbereich: </ion-label>
+  <ion-item>
+    <ion-label>Monat</ion-label>
+    <ion-select (ionChange)="testOnchange()" okText="Okay1" cancelText="Dismiss" [(ngModel)]="monat" multiple="false">
+      <ion-option value="0">Alle</ion-option>
+      <ion-option value="1">Januar</ion-option>
+      <ion-option value="2">Februar</ion-option>
+      <ion-option value="3">März</ion-option>
+      <ion-option value="4">April</ion-option>
+      <ion-option value="5">Mai</ion-option>
+      <ion-option value="6">Juni</ion-option>
+      <ion-option value="7">Juli</ion-option>
+      <ion-option value="8">August</ion-option>
+      <ion-option value="9">September</ion-option>
+      <ion-option value="10">Oktober</ion-option>
+      <ion-option value="11">November</ion-option>
+      <ion-option value="12">Dezember</ion-option>
+    </ion-select>
+  </ion-item>
+  <ion-label>Ausgaben: {{alleAusgaben}}</ion-label>
+  <ion-list>
+    
+    <button ion-item *ngFor="let item of todo$ |async" (click)="test($event, item)">
+      <ion-icon name="ios-create" item-left></ion-icon>
+      Betrag: {{item.betrag}}€<div style="font-size: 11px">{{item.kaufzeitpunkt | date: 'dd/MM/yyyy H:mm'}}  {{item.unterkategorie}}</div>
+      <div class="item-note" item-right>
+        {{item.kategorie}}
+      </div>
+    </button>
+  </ion-list>
+  <!--
+  <div *ngIf="selectedItem" padding>
+    You navigated here from <b>{{selectedItem.title}}</b>
+  </div>
+  -->
+</ion-content>
