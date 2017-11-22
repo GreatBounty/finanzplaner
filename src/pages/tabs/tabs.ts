@@ -17,7 +17,6 @@ export class TabsPage {
   //tab3Root = ContactPage;
   tabsIndex: any;
   constructor(public navparams: NavParams) {
-    debugger;
     var test = navparams.get("index");
     this.tabsIndex = test;
   }

@@ -45,7 +45,6 @@ export class DbAusgaben {
     subCategories: any[] = [];
 
     constructor(private helper: Helper, private afs: AngularFirestore) {
-        debugger;
         this.ausgabenCollectionRef = this.afs.collection<IAusgabe>('Ausgaben');
         this.ausgaben$ = this.ausgabenCollectionRef.valueChanges();
 
@@ -54,7 +53,6 @@ export class DbAusgaben {
     }
     
     getAusgabenCollection(path?: string) {
-        debugger;
         if (path !== null && path !== "" && path !== undefined) {
             return this.afs.collection<IAusgabe>('Ausgaben/' + path)
         }

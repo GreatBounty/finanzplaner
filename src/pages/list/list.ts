@@ -56,8 +56,6 @@ export class ListPage {
 
 
   test(event, item) {
-
-    debugger;
     let test = item.id;
     console.log(item);
   }
