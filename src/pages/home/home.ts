@@ -70,6 +70,7 @@ export class HomePage {
     this.calculateDiff();
 
   }
+
   calculateDiff() {
     this.diffBudgetAusgaben = this.monatsBudget - this.monatsAusgaben;
     if (this.diffBudgetAusgaben < (this.monatsBudget * 0.35)) {
