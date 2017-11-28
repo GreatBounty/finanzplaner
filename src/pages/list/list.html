@@ -8,7 +8,9 @@
 </ion-header>
 
 <ion-content>
-  <ion-label>Filterbereich: <ion-icon class="icon" (click)="goToFilter()" ios="ios-add-circle" md="md-add-circle"></ion-icon></ion-label>
+  <ion-label>Filterbereich:
+    <ion-icon class="icon" (click)="goToFilter()" ios="ios-add-circle" md="md-add-circle"></ion-icon>
+  </ion-label>
   <ion-item>
     <ion-label>Monat</ion-label>
     <ion-select (ionChange)="testOnchange()" okText="Okay1" cancelText="Dismiss" [(ngModel)]="monat" multiple="false">
@@ -29,28 +31,31 @@
   </ion-item>
   <ion-label>Ausgaben: {{alleAusgaben}}</ion-label>
 
-  <ion-label>Heute</ion-label>
-  <ion-list>
-    <button ion-item *ngFor="let item of heute$ |async" (click)="test($event, item)">
+  <div *ngIf="!isFiltered">
+    <ion-label>Heute</ion-label>
+    <ion-list>
+      <button ion-item *ngFor="let item of heute$ |async" (click)="test($event, item)">
       <ion-icon name="ios-create" item-left></ion-icon>
       Betrag: {{item.betrag}}€<div style="font-size: 11px">{{item.kaufzeitpunkt | date: 'dd/MM/yyyy H:mm'}}  {{item.unterkategorie}}</div>
       <div class="item-note" item-right>
         {{item.kategorie}}
       </div>
     </button>
-  </ion-list>
-  <ion-label>Diesen Monat</ion-label>
-  <ion-list>
-    <button ion-item *ngFor="let item of monat$ |async" (click)="test($event, item)">
+    </ion-list>
+  </div>
+  <div *ngIf="!isFiltered">
+    <ion-label>Diesen Monat</ion-label>
+    <ion-list>
+      <button ion-item *ngFor="let item of monat$ |async" (click)="test($event, item)">
       <ion-icon name="ios-create" item-left></ion-icon>
       Betrag: {{item.betrag}}€<div style="font-size: 11px">{{item.kaufzeitpunkt | date: 'dd/MM/yyyy H:mm'}}  {{item.unterkategorie}}</div>
       <div class="item-note" item-right>
         {{item.kategorie}}
       </div>
     </button>
-  </ion-list>
-
-  <ion-label>Alle</ion-label>
+    </ion-list>
+  </div>
+  <ion-label *ngIf="!isFiltered">Alle</ion-label>
   <ion-list>
     <button ion-item *ngFor="let item of todo$ |async" (click)="test($event, item)">
       <ion-icon name="ios-create" item-left></ion-icon>

@@ -7,12 +7,15 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { TabsPage } from '../pages/tabs/tabs';
 
+import { FilterPage } from '../pages/filter/filter';
+
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
+  //rootPage: any = FilterPage;
   rootPage: any = TabsPage;
 
   pages: Array<{ title: string, component: any }>;

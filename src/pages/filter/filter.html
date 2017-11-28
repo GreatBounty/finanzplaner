@@ -8,20 +8,53 @@
 </ion-header>
 
 <ion-content>
-    <ion-item> 
-       
-        <ion-label fixed> <ion-checkbox></ion-checkbox>Jahr</ion-label>
-        <ion-datetime displayFormat="YYYY" [(ngModel)]="myDate"></ion-datetime>
-    </ion-item>
-  <ion-item>
-        <ion-label fixed>Jahr22</ion-label>
-       
-        <ion-datetime displayFormat="YYYY" pickerFormat="MMMM YYYY" [(ngModel)]="myDate"></ion-datetime>
-    </ion-item>
-      <ion-checkbox></ion-checkbox>
+    <ion-row>
+        <ion-col>
+            <ion-item no-lines>
+                <ion-checkbox [(ngModel)]="chkYear"></ion-checkbox>
+                <ion-label>Jahr</ion-label>
+            </ion-item>
+        </ion-col>
+        <ion-col>
+            <ion-item no-lines>
+                <ion-datetime displayFormat="YYYY" [(ngModel)]="year"></ion-datetime>
+            </ion-item>
+        </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col>
+            <ion-item no-lines>
+                <ion-checkbox [(ngModel)]="chkMonth"></ion-checkbox>
+                <ion-label>Monat</ion-label>
+            </ion-item>
+        </ion-col>
+        <ion-col>
+            <ion-item no-lines>
+                <ion-datetime displayFormat="MM" [(ngModel)]="month"></ion-datetime>
+            </ion-item>
+        </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col>
+            <ion-item no-lines>
+                <ion-checkbox [(ngModel)]="chkDay"></ion-checkbox>
+                <ion-label>Tag</ion-label>
+            </ion-item>
+        </ion-col>
+        <ion-col>
+            <ion-item no-lines>
+                <ion-datetime displayFormat="DD" [(ngModel)]="day"></ion-datetime>
+            </ion-item>
+        </ion-col>
+    </ion-row>
 
+    <ion-item>
+        <ion-label class="clickable" (click)="executeFilter()">Filter anwenden</ion-label>
+    </ion-item>
+
+    <!--
     <ion-label>Filterbereich:
-        <ion-icon class="icon" (click)="testK()" ios="ios-add-circle" md="md-add-circle"></ion-icon>
+        <ion-icon class="icon" (click)="testK()" name="ios-add-circle"></ion-icon>
     </ion-label>
     <ion-item>
         <ion-label>Monat</ion-label>
@@ -42,4 +75,5 @@
         </ion-select>
     </ion-item>
     <ion-label>Ausgaben: {{alleAusgaben}}</ion-label>
+    -->
 </ion-content>
