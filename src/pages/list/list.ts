@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/Observable';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { StatusBar } from '@ionic-native/status-bar';
 import { DbAusgaben } from '../../database/db_ausgaben';
+import { FilterPage } from '../filter/filter';
 
 @Component({
   selector: 'page-list',
@@ -18,11 +19,12 @@ export class ListPage {
   monat: string;
   ausgabenCollection: AngularFirestoreCollection<IAusgabe>;
   todo$: Observable<IAusgabe[]>;
+  heute$: Observable<IAusgabe[]>;
+  monat$: Observable<IAusgabe[]>;
 
   constructor(public dbAusgaben: DbAusgaben, public statusBar: StatusBar, public navCtrl: NavController, public navParams: NavParams, private afs: AngularFirestore) {
     this.statusBar.styleDefault();
-
-    this.ausgabenCollection = this.dbAusgaben.getAusgabenSortedCollection();
+    this.ausgabenCollection = this.afs.collection<IAusgabe>('Ausgaben', ref => ref.orderBy("kaufzeitpunkt", "desc"));
     this.todo$ = this.ausgabenCollection.snapshotChanges().map(actions => {
       return actions.map(a => {
         const data = a.payload.doc.data() as IAusgabe;
@@ -32,10 +34,37 @@ export class ListPage {
     });
     this.calculateCost(this.ausgabenCollection);
 
+
+    var today = new Date();
+    var todayDay = today.getDate();
+    var todayMonth = today.getMonth()+1;
+    var todayYear = today.getFullYear();
+
+    var heute = this.afs.collection<IAusgabe>('Ausgaben', ref => ref.where("year", "==", todayYear).where("month", "==", todayMonth).where("day", "==", todayDay).orderBy("kaufzeitpunkt", "desc"));
+    this.heute$ = heute.snapshotChanges().map(actions => {
+      return actions.map(a => {
+        const data = a.payload.doc.data() as IAusgabe;
+        const id = a.payload.doc.id;
+        return { id, ...data };
+      })
+    });
+
+    var monat = this.afs.collection<IAusgabe>('Ausgaben', ref => ref.where("year", "==", todayYear).where("month", "==", todayMonth).orderBy("kaufzeitpunkt", "desc"));
+    this.monat$ = monat.snapshotChanges().map(actions => {
+      return actions.map(a => {
+        const data = a.payload.doc.data() as IAusgabe;
+        const id = a.payload.doc.id;
+        return { id, ...data };
+      })
+    });
+
   }
 
-  testOnchange() {
 
+  goToFilter(){
+    this.navCtrl.push(FilterPage);
+  }
+  testOnchange() {
     if (this.monat !== undefined && this.monat !== "") {
       if (this.monat === "0") {
         this.ausgabenCollection = this.afs.collection<IAusgabe>('Ausgaben', ref => ref.orderBy("month", "asc").orderBy("day", "desc"));

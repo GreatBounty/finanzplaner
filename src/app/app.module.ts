@@ -8,7 +8,7 @@ import { ListPage } from '../pages/list/list';
 import { AusgabePage } from '../pages/ausgabe/ausgabe';
 import { ChartsPage } from '../pages/charts/charts';
 import { TabsPage } from '../pages/tabs/tabs';
-
+import { FilterPage } from '../pages/filter/filter';
 
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -34,7 +34,8 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
     ListPage,
     AusgabePage,
     ChartsPage,
-    TabsPage
+    TabsPage,
+    FilterPage
   ],
   imports: [
     BrowserModule,
@@ -49,7 +50,8 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
     ListPage,
     AusgabePage,
     ChartsPage,
-    TabsPage
+    TabsPage,
+    FilterPage
   ],
   providers: [
     StatusBar,
