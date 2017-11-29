@@ -21,7 +21,7 @@ export class ListPage {
   todo$: Observable<IAusgabe[]>;
   heute$: Observable<IAusgabe[]>;
   monat$: Observable<IAusgabe[]>;
-  isFiltered : boolean = false;
+  isFiltered: boolean = false;
 
   constructor(public dbAusgaben: DbAusgaben, public statusBar: StatusBar, public navCtrl: NavController, public navParams: NavParams, private afs: AngularFirestore) {
     this.statusBar.styleDefault();
@@ -29,6 +29,9 @@ export class ListPage {
     let yearFromFilter = navParams.get('year');
     let monthFromFilter = navParams.get('month');
     let dayFromFilter = navParams.get('day');
+    let category = navParams.get('category');
+    let subCategory = navParams.get('subCategory');
+
     if (yearFromFilter !== undefined) {
       this.isFiltered = true;
       const test = this.afs.collection<IAusgabe>('Ausgaben');
@@ -42,6 +45,12 @@ export class ListPage {
       }
       if (dayFromFilter !== 0) {
         test2 = test2.where("day", "==", dayFromFilter);
+      }
+      if (category !== "") {
+        test2 = test2.where("kategorie", "==", category);
+      }
+      if (subCategory !== "") {
+        test2 = test2.where("unterkategorie", "==", subCategory);
       }
 
       this.ausgabenCollection = this.afs.collection<IAusgabe>('Ausgaben', ref => { let query: any = test2; return query; });

@@ -81,7 +81,7 @@ export class HomePage {
     if (this.diffBudgetAusgaben < (this.monatsBudget * 0.2)) {
       this.budgetColor = "budgetColor_red";
     }
-    
+
   }
   ionViewWillEnter() {
     console.log(this.monatsBudget);

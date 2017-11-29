@@ -48,7 +48,44 @@
         </ion-col>
     </ion-row>
 
+    <ion-row>
+        <ion-col>
+            <!--<ion-checkbox [(ngModel)]="chkDay"></ion-checkbox>-->
+            <ion-label>Kategorie:
+                <ion-icon class="clickable" (click)="clearFilter()" name="ios-funnel"></ion-icon>
+            </ion-label>
+            <ion-input placeholder="Kategorie auswählen" [(ngModel)]="Kategorie" (focus)="selectCategorie($event)" type="text" (input)="selectCategorie($event)"></ion-input>
+        </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col>
+            <ion-list>
+                <ion-item no-lines *ngFor="let c of categoriesFiltered">
+                    <ion-label (click)="setCategorieFromHtml(c)">
+                        <ion-icon class="test" ios="logo-apple" md="logo-android"></ion-icon>{{c}}</ion-label>
+                </ion-item>
+            </ion-list>
+        </ion-col>
+    </ion-row>
+
+    <!--
     <ion-item>
+        <ion-label floating>Kategorie</ion-label>
+        <ion-input [(ngModel)]="Kategorie" (focus)="selectCategorie($event)" type="text" (input)="selectCategorie($event)"></ion-input>
+    </ion-item>
+-->
+
+    <ion-item>
+        <ion-label floating>Unterkategorie</ion-label>
+        <ion-input [(ngModel)]="Unterkategorie" type="text" (focus)="selectSubCategorie($event)" (input)="selectSubCategorie($event)"></ion-input>
+    </ion-item>
+    <ion-list>
+        <ion-item *ngFor="let c of subCategoriesFiltered">
+            <ion-label (click)="setSubCategorieFromHtml(c)">{{c}}</ion-label>
+        </ion-item>
+    </ion-list>
+
+    <ion-item no-lines>
         <ion-label class="clickable" (click)="executeFilter()">Filter anwenden</ion-label>
     </ion-item>
 

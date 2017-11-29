@@ -81,19 +81,10 @@ export class AusgabePage {
   }
 
   setCategorieFromHtml(val: any) {
-    let pThis = this;
     this.categoriesFiltered = [];
     this.ausgabeFormGroup.controls.kategorie.setValue(val);
-    //TODO - init data for subCategories
-    pThis.subCategories = [];
+    this.subCategories = [];
     this.setSubCategorieListForHtml(val);
-    /*
-    this.db.list('Kategorien/' + val).forEach(function (values) {
-      for (let subCategories of values) {
-        pThis.subCategories.push(subCategories.$value);
-      }
-    });
-*/
   }
   setSubCategorieFromHtml(val: any) {
     this.subCategoriesFiltered = [];
@@ -101,7 +92,6 @@ export class AusgabePage {
   }
 
   private setSubCategorieListForHtml(val) {
-    let pThis = this;
     let filteredCatList = this.afs.collection('Kategorie', ref => ref.where('KategorieName', '==', val));
     let values = filteredCatList.snapshotChanges().map(actions => {
       return actions.map(a => {
@@ -127,8 +117,8 @@ export class AusgabePage {
 
         values.subscribe(data => {
           if (data.length != 0) {
-            data.forEach(function (val) {
-              pThis.subCategories.push(val.SubKategorieName);
+            data.forEach(val => {
+              this.subCategories.push(val.SubKategorieName);
             })
           }
         });
@@ -136,15 +126,6 @@ export class AusgabePage {
     });
   }
   ionViewWillEnter() {
-    let pThis = this;
-
-    /*
-    this.categorieList.forEach(function (values) {
-      for (let categories of values) {
-        pThis.categories.push(categories.$key);
-      }
-    });
-    */
     let catList = this.afs.collection<any>('Kategorie');
     let values = catList.snapshotChanges().map(actions => {
       return actions.map(a => {
@@ -155,9 +136,9 @@ export class AusgabePage {
     })
     values.subscribe(data => {
       if (data.length > 0) {
-        data.forEach(function (val) {
+        data.forEach(val => {
           let a = val.KategorieName;
-          pThis.categories.push(a);
+          this.categories.push(a);
         })
       }
     });
