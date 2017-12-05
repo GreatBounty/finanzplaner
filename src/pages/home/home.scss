@@ -14,6 +14,188 @@ page-home {
     }
     .budgetColor_black{
             color: black;
+            
     }
 
+    //Mein Budget
+
+    .budget{
+        background-color:#60778F;
+        text-align:center;
+        padding:5px;
+        width:150px;
+        margin-top:40px;
+        border-radius:20px;
+        border:3px solid white;
+        box-shadow: 7px 7px 5px rgb(46, 46, 46);
+    }
+
+    .wert-budget{
+            font-size: 30px;
+            font-weight:800px;
+            display:block;
+            color:white;
+    }
+    .title-budget {
+            color:white;
+            padding-left:25px;
+            font-size: 12px;
+
+    }
+
+ //Verfügbar
+    .verfuegbar{
+        height: 200px;
+        margin-top: 20px;
+        margin-bottom:20px;
+    }
+
+
+    .circle{
+        display: absolute;
+        border-radius: 50%;
+        width: 200px;
+        height: 200px;
+        background-color: #60778F;
+        border:5px solid white;
+        margin: 0 auto;
+        box-shadow: 7px 7px 5px rgb(46, 46, 46);
+
+    }
+
+    .wert{
+        display: block;
+        padding-top:65px;
+        color: rgb(12, 196, 97);
+        text-align: center;
+        font-size: 40px;
+        font-weight: 1300px;
+    }
+
+    .title{
+        display: block;
+        color: white;
+        padding-left: 60px;
+        font-size:15px;
+
+    }
+
+
+// Ausgaben
+
+    .ausgaben{
+        float:right;
+        background-color: #60778F;
+        text-align:center;
+        padding:10px;
+        width:150px;
+        border-radius:20px;
+        border:3px solid white;
+        box-shadow: 7px 7px 5px rgb(46, 46, 46);
+
+
+    .wert-ausgaben{
+        font-size: 30px;
+        font-weight:800px;
+        display:block;
+        color:rgb(199, 36, 36);
+
+    }
+
+    }
+    .title-ausgaben{
+        color:white;
+        font-size: 12px;
+        padding-left: 25px;
+    }
+
+
+
+
+
+
+
+
+
+
+
+    /*
+    .circleBudget {
+        background: rgba(52,25,25, .3);
+        border-radius: 50px;
+        color: #615E5F;
+        display: table-cell;
+        font-size: 14px;
+        height: 100px;
+        margin: 0 auto;
+        text-align: center;
+        vertical-align: middle;
+        width: 100px;
+    }
+    .circleBudget strong {
+        font-size: 20px;
+    }
+    .circleBudget sup {
+        font-size: 10px;
+    }
+
+    .titleBudget {
+        color: white;
+        font-size: 8px;
+    }
+
+    .circleVerfuegbar {
+        background: rgba(52,25,25, .3);
+        border-radius: 50px;
+        color: #84AF53;
+        display: table-cell;
+        font-size: 14px;
+        height: 100px;
+        margin: 0 auto;
+        text-align: center;
+        vertical-align: middle;
+        width: 100px;
+    }
+    .circleVerfuegbar strong {
+        font-size: 20px;
+    }
+    .circleVerfuegbar sup {
+        font-size: 10px;
+    }
+
+    .titleVerfuegbar {
+        color: white;
+        font-size: 8px;
+    }
+
+    .circleAusgaben {
+        background: rgba(52,25,25, .3);
+        border-radius: 50px;
+        color: #BF0E35;
+        display: table-cell;
+        font-size: 14px;
+        height: 100px;
+        margin: 0 auto;
+        text-align: center;
+        vertical-align: middle;
+        width: 100px;
+    }
+    .circleAusgaben strong {
+        font-size: 20px;
+    }
+    .circleAusgaben sup {
+        font-size: 10px;
+    }
+
+    .titleAusgaben {
+        color: white;
+        font-size: 8px;
+    }
+
+        .center {
+                margin-left: auto;
+                margin-right: auto;
+                display: block;
+            }
+*/
 }

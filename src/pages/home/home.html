@@ -3,22 +3,26 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Home</ion-title>
+    <ion-title>Monatsübersicht</ion-title>
   </ion-navbar>
 </ion-header>
 
 
 
-<ion-content padding>
-  <h3>Monatsübersicht</h3>
-  <ion-item>
-    <ion-label  floating>Budget: {{monatsBudget}}    <ion-icon ios="ios-add" md="md-add"></ion-icon></ion-label>
-    <ion-input (change)=calculateDiff() required type="number" [(ngModel)]="monatsBudget"></ion-input>
-  </ion-item>
-  <ion-label>Ausgaben laufender Monat: {{monatsAusgaben}}</ion-label>
-  <ion-input (change)=calculateDiff() required type="number" [(ngModel)]="monatsAusgaben"></ion-input>
-  <ion-label>Noch zur Verfügung stehendes Budget:</ion-label>
-  <p></p>
-  <div [class]="budgetColor">{{diffBudgetAusgaben}}</div>
+<ion-content padding class="login-background">
+    <div class="budget">
+      <span class="wert-budget">{{monatsBudget}} €</span>
+        <span class="title-budget">Mein Budget</span>
+    </div>
+  <div class="verfuegbar"> 
+      <div class="circle">
+        <span class="wert">{{diffBudgetAusgaben}} €</span>
+        <span class="title">Frei verfügbar</span>
+      </div>
+  </div>
+  <div class="ausgaben">
+    <span class="wert-ausgaben">{{monatsAusgaben}} €</span>
+      <span class="title-ausgaben">Aktuelle Ausgaben</span>
+    </div>
 
 </ion-content>

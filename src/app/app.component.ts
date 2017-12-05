@@ -15,8 +15,8 @@ import { FilterPage } from '../pages/filter/filter';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = FilterPage;
-  //rootPage: any = TabsPage;
+  //rootPage: any = FilterPage;
+  rootPage: any = TabsPage;
 
   pages: Array<{ title: string, component: any }>;
 
