@@ -4,12 +4,13 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Home</ion-title>
+    <ion-title>Monatsübersicht</ion-title>
   </ion-navbar>
 </ion-header>
 <ion-content class="testimage" padding>
 
 
+<<<<<<< HEAD
   <a class="mdi mdi-home mdi-light" href="/">Home</a>
   <a class="mdi mdi-home mdi-dark" href="/">Home</a>
   <h3>Monatsübersicht</h3>
@@ -24,5 +25,23 @@
   <ion-label>Noch zur Verfügung stehendes Budget:</ion-label>
   <p></p>
   <div [class]="budgetColor">{{diffBudgetAusgaben}}</div>
+=======
+
+<ion-content padding class="login-background">
+    <div class="budget">
+      <span class="wert-budget">{{monatsBudget}} €</span>
+        <span class="title-budget">Mein Budget</span>
+    </div>
+  <div class="verfuegbar"> 
+      <div class="circle">
+        <span class="wert">{{diffBudgetAusgaben}} €</span>
+        <span class="title">Frei verfügbar</span>
+      </div>
+  </div>
+  <div class="ausgaben">
+    <span class="wert-ausgaben">{{monatsAusgaben}} €</span>
+      <span class="title-ausgaben">Aktuelle Ausgaben</span>
+    </div>
+>>>>>>> 6d33605e3d3da9b4f06861a4ae1d82cb8d021884
 
 </ion-content>
