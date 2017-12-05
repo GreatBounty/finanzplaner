@@ -56,6 +56,7 @@ export class HomePage {
   monatsAusgaben: number;
   diffBudgetAusgaben: number;
   budgetColor: string;
+
   constructor(private afs: AngularFirestore, public navCtrl: NavController, private formBuilder: FormBuilder) {
 
     this.ausgabenCollectionRef = this.afs.collection<IAusgabe>('Ausgaben');
@@ -64,10 +65,35 @@ export class HomePage {
     this.kategorienCollectionRef = this.afs.collection<any>('Kategorien');
     this.kategorien$ = this.kategorienCollectionRef.valueChanges();
 
+
+
     this.monatsBudget = 450;
     this.monatsAusgaben = 400;
+    //TODO Wert aus DB setzen
     this.budgetColor = "budgetColor_black";
-    this.calculateDiff();
+    let today = new Date();
+
+    let ausgbaneColl = this.afs.collection<IAusgabe>('Ausgaben', ref => ref.where("month", "==", today.getMonth() + 1).orderBy("kaufzeitpunkt", "desc"));
+    let ausgaben = ausgbaneColl.snapshotChanges().map(actions => {
+      return actions.map(a => {
+        const data = a.payload.doc.data() as IAusgabe;
+        const id = a.payload.doc.id;
+        return { id, ...data };
+      })
+    });
+    let betrag: number = 0;
+    ausgaben.subscribe(data => {
+      if (data.length > 0) {
+        data.forEach(val => {
+          betrag += Number(val.betrag);
+        })
+      }
+      this.monatsAusgaben = betrag;
+      this.calculateDiff();
+    });
+
+    
+    //this.calculateDiff();
 
   }
 
